@@ -30,7 +30,7 @@ const CarouselItem = ({ cover, title, year, contentRating, duration }) => (
 
 // proptypes sirve para poder validar los tipos de datos que mandamos
 
-CarouselItem.prototype = {
+CarouselItem.proptypes = {
   cover: PropTypes.string,
   title: PropTypes.string,
   year: PropTypes.number,
