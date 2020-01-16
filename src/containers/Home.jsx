@@ -1,27 +1,24 @@
 import React, { useState, useEffect } from "react";
-import Header from "../components/Header";
+import { connect } from "react-redux";
 import Search from "../components/Search";
 import Categories from "../components/Categories";
 import Carousel from "../components/Carousel";
 import CarouselItem from "../components/CarouselItem";
-import Footer from "../components/Footer";
 import useInitialState from "../hooks/useInitialState";
 import "../assets/styles/App.scss";
 
-const API = "http://localhost:3000/initalState";
+// const API = "http://localhost:3000/initalState";
 
-const Home = () => {
-  const initialState = useInitialState(API);
-  return initialState.length === 0 ? (
-    <h1>Loading...</h1>
-  ) : (
+const Home = ({ mylist, trends, originals }) => {
+  // const initialState = useInitialState(API);
+  return (
     // NOTA: otra forma de llamar react.fragmen es dejando bacio los pico parentecis
     <>
       <Search />
 
       <Categories title='Mi lista'>
         <Carousel>
-          {initialState.trends.map(item => (
+          {mylist.map(item => (
             <CarouselItem key={item.id} {...item} />
           ))}
         </Carousel>
@@ -29,7 +26,7 @@ const Home = () => {
 
       <Categories title='Tendencias'>
         <Carousel>
-          {initialState.trends.map(item => (
+          {trends.map(item => (
             <CarouselItem key={item.id} {...item} />
           ))}
         </Carousel>
@@ -37,7 +34,7 @@ const Home = () => {
 
       <Categories title='Originales de platzi video'>
         <Carousel>
-          {initialState.trends.map(item => (
+          {originals.map(item => (
             <CarouselItem key={item.id} {...item} />
           ))}
         </Carousel>
@@ -45,4 +42,15 @@ const Home = () => {
     </>
   );
 };
-export default Home;
+
+const mapStateToProps = state => {
+  return {
+    mylist: state.mylist,
+    trends: state.trends,
+    originals: state.originals
+  };
+};
+
+//export default Home;
+// Componente conectado al provider
+export default connect(mapStateToProps, null)(Home);
