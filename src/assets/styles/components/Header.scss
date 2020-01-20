@@ -9,6 +9,17 @@
   width: 100%;
 }
 
+.header__green {
+  align-items: center;
+  background-color: #21c08b;
+  color: white;
+  display: flex;
+  height: 100px;
+  justify-content: space-between;
+  top: 0px;
+  width: 100%;
+}
+
 .header__img {
   margin-left: 30px;
   width: 200px;
@@ -55,4 +66,6 @@ ul:hover {
 .header__menu--profile img {
   margin-right: 8px;
   width: 40px;
+  border-radius: 100%;
+  object-fit: cover;
 }

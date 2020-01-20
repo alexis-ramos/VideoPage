@@ -14,7 +14,7 @@ const Home = ({ mylist, trends, originals }) => {
   return (
     // NOTA: otra forma de llamar react.fragmen es dejando bacio los pico parentecis
     <>
-      <Search />
+      <Search isHome />
 
       <Categories title='Mi lista'>
         <Carousel>
